@@ -5,8 +5,8 @@ This problem provides practice at:
   ***  LOOPS WITHIN LOOPS in SEQUENCES-OF-SUBSEQUENCES problems.  ***
 
 Authors: David Mutchler, Valerie Galluzzi, Mark Hays, Amanda Stouder,
-         their colleagues and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         their colleagues and Achintya Gupta.
+"""  # TO: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 ########################################################################
 # Students:
@@ -38,7 +38,7 @@ def main():
 def run_test_integers():
     """ Tests the    integers    function. """
     # ------------------------------------------------------------------
-    # TODO: 2. Implement this TEST function.
+    # TO: 2. Implement this TEST function.
     #   It TESTS the  integers  function defined below.
     #   Include at least ** 1 ** ADDITIONAL test beyond those we wrote.
     #
@@ -70,6 +70,11 @@ def run_test_integers():
                        ])
     print('Expected is:', expected)
     print('Actual is:  ', answer)
+    # Test 2:
+    expected = []
+    answer = integers(())
+    print('Expected is:', expected)
+    print('Actual is:  ', answer)
 
 
 def integers(sequence_of_sequences):
@@ -94,8 +99,14 @@ def integers(sequence_of_sequences):
       :type sequence_of_sequences: (list|tuple) of (list|tuple|string)
       :rtype: list of int
     """
+    list=[]
+    for k in range(len(sequence_of_sequences)):
+        for l in range(len(sequence_of_sequences[k])):
+            if type(sequence_of_sequences[k][l])==int:
+                list=list+[sequence_of_sequences[k][l]]
+    return list
     # ------------------------------------------------------------------
-    # TODO: 3. Implement and test this function.
+    # TO: 3. Implement and test this function.
     #   Note that you should write its TEST function first (above).
     # ------------------------------------------------------------------
     ####################################################################
@@ -123,7 +134,7 @@ def integers(sequence_of_sequences):
 def run_test_big_letters():
     """ Tests the    big_letters    function. """
     # ------------------------------------------------------------------
-    # TODO: 4. Implement this TEST function.
+    # TO: 4. Implement this TEST function.
     #   It TESTS the  big_letters  function defined below.
     #   Include at least ** 1 ** ADDITIONAL test beyond those we wrote.
     # ------------------------------------------------------------------
@@ -158,6 +169,20 @@ def run_test_big_letters():
                           ])
     print('Expected is:', expected)
     print('Actual is:  ', answer)
+# Test 2:
+    expected = 'OCTOPUS'
+    answer = big_letters([(345345,[]),  # not a string
+                          'Otsuu?',  # OTSSS
+                          (10, 'Calcium?', 10),  # not a string
+                          [],  # not a string
+                          ['Tent!'],  # not a string
+                          'CTOP',  #
+                          ['Udfgedfvsss;;;:::'],  # not a string
+                          '3,4,5,53,2',  # OOPS
+                          'USemper'
+                          ])
+    print('Expected is:', expected)
+    print('Actual is:  ', answer)
 
 
 def big_letters(sequence_of_sequences):
@@ -188,8 +213,16 @@ def big_letters(sequence_of_sequences):
 
     Precondition:  the given argument is a sequence of sequences.
     """
+    string=''
+    print(type(string))
+    for k in range(len(sequence_of_sequences)):
+        if type(sequence_of_sequences[k])==str:
+            for l in range(len(sequence_of_sequences[k])):
+                if sequence_of_sequences[k][l].isupper():
+                    string=string+sequence_of_sequences[k][l]
+    return string
     # ------------------------------------------------------------------
-    # TODO: 5. Implement and test this function.
+    # TO: 5. Implement and test this function.
     #   Note that you should write its TEST function first (above).
     # ------------------------------------------------------------------
     ####################################################################
