@@ -5,8 +5,8 @@ This problem provides practice at:
   ***  LOOPS WITHIN LOOPS in PRINTING-TO-CONSOLE problems.  ***
 
 Authors: David Mutchler, Valerie Galluzzi, Mark Hays, Amanda Stouder,
-         their colleagues and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         their colleagues and Achintya Gupta.
+"""  # TO: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 ########################################################################
 # Students:
@@ -74,8 +74,20 @@ def shape(r):
     Preconditions:  r is a positive number.
     For purposes of "lining up", assume r is a single digit.
     """
+    for j in range(r):
+        for k in range(j):
+            print(' ',end='')
+        for l in range(r-j):
+            print('+',end='')
+        print('!',end='')
+        for m in range(r-j):
+            print('{}'.format(r-j-m),end='')
+        for n in range(j):
+            print('-',end='')
+        print()
+
     # ------------------------------------------------------------------
-    # TODO: 2. Implement and test this function.
+    # TO: 2. Implement and test this function.
     #          Some tests are already written for you (above).
     #
     ####################################################################
