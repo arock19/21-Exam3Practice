@@ -5,8 +5,8 @@ This problem provides practice at:
   ***  LOOPS WITHIN LOOPS in 2D GRAPHICS problems.  ***
 
 Authors: David Mutchler, Valerie Galluzzi, Mark Hays, Amanda Stouder,
-         their colleagues and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         their colleagues and Achintya Gupta.
+"""  # TO: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 ########################################################################
 # Students:
@@ -88,8 +88,20 @@ def hourglass(window, n, point, radius, color):
     where n and radius are positive and color is a string that denotes
     a color that rosegraphics understands.
     """
+    for a in range(2):
+        for b in range(n):
+            for c in range(b+1):
+                circle=rg.Circle(point,radius)
+                circle.fill_color=color
+                circle.center.x=circle.center.x+2*c*radius-b*radius
+                circle.center.y=circle.center.y+((-1)**a)*(3**(1/2))*b*radius
+                line=rg.Line(rg.Point(circle.center.x-radius,circle.center.y),rg.Point(circle.center.x+radius,circle.center.y))
+                circle.attach_to(window)
+                line.attach_to(window)
+                window.render()
+
     # ------------------------------------------------------------------
-    # TODO: 2. Implement and test this function.
+    # TO: 2. Implement and test this function.
     #       We provided some tests for you (above).
     # ------------------------------------------------------------------
     ####################################################################
@@ -162,8 +174,16 @@ def many_hourglasses(window, square, m, colors):
     where m is positive and colors is a sequence of strings,
     each of which denotes a color that rosegraphics understands.
     """
+
+    rectangle = rg.Circle(square.center, square.length_of_each_side / 2).get_bounding_box()
+    for k in range(m):
+        rectangle.clone().attach_to(window)
+        window.render(0.1)
+        hourglass(window,1+k,rectangle.get_center(),square.length_of_each_side/2,colors[k%len(colors)])
+        rectangle.corner_1.move_by((k+1)*square.length_of_each_side,-(3**0.5)*square.length_of_each_side/2)
+        rectangle.corner_2.move_by((k + 2) * square.length_of_each_side, (3**0.5)*square.length_of_each_side/2)
     # ------------------------------------------------------------------
-    # TODO: 3. Implement and test this function.
+    # TO: 3. Implement and test this function.
     #       We provided some tests for you (above).
     # ------------------------------------------------------------------
     ####################################################################
